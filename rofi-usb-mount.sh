@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rofi_cmd='rofi -dmenu show run -lines 5 -opacity "85" -bw 0 -width 30 -padding 20 -i'
-usb_re='sd[b-z]'
+usb_re='sd[b-z]\|mmcblk'
 
 usbcheck(){ \
     mounteddrives="$(lsblk -rpo "name,type,size,mountpoint" | grep $usb_re | awk '$2=="part"&&$4!=""{printf "%s (%s)\t  ",$1,$3}')"
